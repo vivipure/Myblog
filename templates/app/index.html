@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main %}
+    
+    <div class="content">
+        <div class="content-inner">
+            <div class="recent-posts">
+                {% for post in post_list %}
+
+                <article class="recent-post-item">
+                    <a class="title" href="{{ post.get_absolute_url }}">
+                        <h2>{{ post.title }}</h2>
+                    </a>
+                    <div class="post-meta">
+                      <time class="time" datetime="2019-04-26T08:00:00.000Z">
+                        {{ post.created_time }}
+                      </time>
+                      <span class="slash">/</span>
+                      <ul class="index-tag-list">
+                           
+                            <li class="index-tag-list-item"><a class="index-tag-list-link" href="/tags/Compile/">{{ post.category }}</a></li>
+                        
+                           
+                        </ul>
+                    </div>
+                    <div class="post-excerpt">
+                        <p>{{ post.excerpt }}<br>
+                    </p></div>
+                    <p class="author">作者：{{ post.author }}</p>
+                    <a class="more" href="{{ post.get_absolute_url }}"> 阅读全文〉</a>
+                </article>
+                {% empty %}
+
+                <div class="no-post">暂时还没有发布的文章！</div>
+                {% endfor %} 
+                
+            </div>
+        </div>
+    </div>
+{% endblock main %}
